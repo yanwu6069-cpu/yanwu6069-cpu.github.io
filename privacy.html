@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="自身可视化（PersonalFinance）的本地数据、Google OAuth 授权及 Gmail 摘要邮件隐私说明。">
+  <meta name="referrer" content="no-referrer">
+  <title>隐私政策 — 自身可视化 / PersonalFinance</title>
+  <link rel="stylesheet" href="info.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="muted">个人自用应用的数据处理说明</p>
+    <h1>隐私政策</h1>
+    <p>适用于自身可视化 / PersonalFinance。更新日期：2026 年 10 月 16 日。</p>
+    <nav aria-label="说明页导航">
+      <a href="index.html">应用说明</a>
+      <a href="privacy.html" aria-current="page">隐私政策</a>
+      <a href="terms.html">使用说明与条款</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="scope">
+    <h2 id="scope">1. 适用范围与用途</h2>
+    <p>本应用是本人在自己的 Windows 电脑上运行的个人记录和分析工具，不是公共财务托管服务。数据用于本人查看财务、饮食、资产和运行状态，以及本人明确启用的摘要邮件与异常提示。</p>
+  </section>
+
+  <section aria-labelledby="local-data">
+    <h2 id="local-data">2. 本地处理的数据</h2>
+    <ul>
+      <li>经正常授权取得或本人录入的财务来源记录、账本分类、核对状态和修正历史。</li>
+      <li>本人录入的食品购买、实际食用、营养依据、目标和体重等健康记录。</li>
+      <li>本人录入的持仓、现金、已发生的定投记录，以及公开市场数据。</li>
+      <li>设置、采集状态、日志、本地备份、报告和发送队列记录。</li>
+    </ul>
+    <p>上述数据默认保存在本机 SQLite 数据库和本地文件中，不自动上传原始流水或完整数据库至公共代码仓库、模型服务或第三方分析服务。只有已经启用的邮件摘要及发送所必需的信息会发给 Google。本人另行导出、复制或备份文件的行为由本人管理。</p>
+    <p>支付平台的正常登录状态保留在本机所使用的平台应用或专用浏览器配置中。登录、扫码、验证码和额外安全验证由本人亲自完成；本应用不获取支付密码或验证码，也不绕过平台验证。</p>
+  </section>
+
+  <section aria-labelledby="google">
+    <h2 id="google">3. Google 账号授权与 Gmail 权限</h2>
+    <p>本人通过 Google 官方浏览器授权流程授予访问权限。当前配置仅请求 <code>https://www.googleapis.com/auth/gmail.send</code>，用于发送摘要与运行异常提示。当前配置不请求读取收件箱、删除邮件或管理邮箱的权限，不读取无关邮件。</p>
+    <p>应用在本机保存本人填写的发件邮箱、收件设置、OAuth 桌面客户端配置和授权所返回的令牌。客户端配置及 access/refresh token 使用当前 Windows 用户的 DPAPI 加密保存；程序在需要时读取密文、请求新的短期访问令牌并调用 Google 官方 API。没有邮箱密码、应用密码或第三方邮件转发服务器。</p>
+    <p>DPAPI 保护的是 OAuth 配置与令牌；这不表示整个账本、日志或备份都已加密。本地文件访问还依赖 Windows 文件权限，本人应限制私有文件的访问并妥善保护设备、Windows 用户及其备份；换机或授权失效可能需要本人重新授权。</p>
+    <p>若未来增加其他 Google 权限，必须先说明该功能用途并由本人决定是否重新授权；不会因为已有发送权限而自动扩大邮箱访问范围。</p>
+  </section>
+
+  <section aria-labelledby="email-data">
+    <h2 id="email-data">4. 发送给 Google 的数据</h2>
+    <p>通过 Gmail API 发送邮件时，Google 会处理发件/收件地址、发送所需的授权信息、邮件主题和正文。当前个人部署将收件人配置为本人邮箱；修改收件设置前应由本人核对目标地址。</p>
+    <p>月报是中文纯文本汇总，可能包含月度金额合计、通用消费分类、平台来源归属与数据覆盖情况、已记录的逐日和月度营养汇总、已录入资产概况及公开市场观察。异常提示只包含来源、运行状态和需要本人处理的说明。</p>
+    <p>邮件不附带原始数据库、单笔流水或原文，不包含账号、交易对方、商户或菜名。汇总本身仍可能属于个人财务或健康信息，应由本人保护邮箱访问权限。</p>
+    <p>应用不出售 Google 用户数据，不将其用于广告、广告画像或训练通用人工智能模型。对 Google API 所得信息的使用遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noreferrer">Google API Services User Data Policy</a>，包括适用的 Limited Use 要求。</p>
+  </section>
+
+  <section aria-labelledby="retention">
+    <h2 id="retention">5. 保存、撤销与删除</h2>
+    <p>本地记录通常会保留至本人修正或删除。自动备份按本人设置的频率和保留规则管理；本地数据库、历史文件、导出副本及备份可能分别存在，删除一处不表示其他副本已被清除。</p>
+    <ol>
+      <li>如不再需要邮件，可在本地设置关闭发送，并由本人在 Google 账号的第三方连接管理中撤销此应用权限。</li>
+      <li>本人可停止本应用的后台进程后，删除本机应用数据、OAuth 密文、独立浏览器配置及相应备份；应先确认是否需要保留账本和其他应用数据。</li>
+      <li>已经通过 Gmail 发送的邮件及 Google 侧相关副本由本人在 Gmail 和 Google 账号中管理。删除本地数据或撤销 OAuth 不会自动删除 Google 侧邮件，也不代表其他收件副本已删除。</li>
+    </ol>
+    <p>授权可能被本人或 Google 撤销，也可能因到期、密码变化、账号安全策略或其他原因失效。应用不能保证永久授权，遇到失效不会绕过验证。</p>
+  </section>
+
+  <section aria-labelledby="static-site">
+    <h2 id="static-site">6. 本说明页面</h2>
+    <p>本静态说明页不提供数据上传表单，不嵌入 JavaScript、外部样式或字体、广告及行为追踪，不访问本机账本。若页面被公开托管，托管基础设施可能按其自身规则记录网络访问日志；本应用未在页面中加入额外追踪。</p>
+  </section>
+
+  <section aria-labelledby="changes">
+    <h2 id="changes">7. 说明更新</h2>
+    <p>若应用的数据用途、收件安排或权限范围变化，应同步更新本说明；新增授权由本人决定。这个说明站点不接收秘密、流水或账号信息，使用者不应在公开渠道提交这些资料。</p>
+  </section>
+
+  <footer>
+    <p><a href="index.html">返回应用说明</a> · <a href="terms.html">使用说明与条款</a></p>
+  </footer>
+</main>
+</body>
+</html>
